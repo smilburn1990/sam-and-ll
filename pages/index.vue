@@ -1,28 +1,32 @@
 <template>
   <section class="wedding">
-    <div class="wedding__nav">
+    <div class="wedding__nav" :class="section.class">
       <ul>
         <li
           v-for="(item, i) in content.nav"
           :key="item"
-          :class="section === item.name.toLowerCase() ? 'selected' : ''"
-          @click="updateSection(item.name, i)"
+          :class="
+            section.name.toLowerCase() === item.name.toLowerCase()
+              ? 'selected'
+              : ''
+          "
+          @click="updateSection(item, i)"
         >
-          {{ item.name }}
+          <h3>{{ item.name }}</h3>
           <!-- <fa :icon="['fal', item.icon]" /> -->
         </li>
       </ul>
     </div>
     <div
-      v-if="section === 'home'"
+      v-if="section.name.toLowerCase() === 'home'"
       class="wedding__home animate__animated animate_fadeIn yellow"
     ></div>
     <div
-      v-if="section === 'schedule'"
+      v-if="section.name.toLowerCase() === 'schedule'"
       class="wedding__schedule animate__animated animate_fadeIn blue"
     ></div>
     <div
-      v-if="section === 'location'"
+      v-if="section.name.toLowerCase() === 'location'"
       class="wedding__location animate__animated animate_fadeIn red"
     >
       <gmap-map
@@ -43,13 +47,92 @@
       </gmap-map>
     </div>
     <div
-      v-if="section === 'faq'"
+      v-if="section.name.toLowerCase() === 'faq'"
       class="wedding__faq animate__animated animate_fadeIn yellow"
     ></div>
     <div
-      v-if="section === 'rsvp'"
+      v-if="section.name.toLowerCase() === 'rsvp'"
       class="wedding__rsvp animate__animated animate_fadeIn blue"
-    ></div>
+    >
+      <form class="wedding__rsvp--form" :action="content.rsvp.link">
+        <label for="name">{{ content.rsvp.name.title }}</label>
+        <input id="name" name="entry.1436407584" type="text" />
+
+        <p>{{ content.rsvp.coming.title }}</p>
+        <div class="input-wrap">
+          <input
+            id="e1"
+            type="radio"
+            name="entry.1749319050"
+            :value="content.rsvp.coming.yes"
+          />
+          <label for="e1">{{ content.rsvp.coming.yes }}</label>
+        </div>
+        <div class="input-wrap">
+          <input
+            id="e2"
+            type="radio"
+            name="entry.1749319050"
+            :value="content.rsvp.coming.no"
+          />
+          <label for="e2">{{ content.rsvp.coming.no }}</label>
+        </div>
+
+        <p>{{ content.rsvp.diet.title }}</p>
+        <div class="input-wrap">
+          <input
+            id="e1"
+            type="checkbox"
+            name="entry.1805014275"
+            :value="content.rsvp.diet.vegetarian"
+          />
+          <label for="e1">{{ content.rsvp.diet.vegetarian }}</label>
+        </div>
+        <div class="input-wrap">
+          <input
+            id="e2"
+            type="checkbox"
+            name="entry.1805014275"
+            :value="content.rsvp.diet.vegan"
+          />
+          <label for="e2">{{ content.rsvp.diet.vegan }}</label>
+        </div>
+        <div class="input-wrap">
+          <input
+            id="e3"
+            type="checkbox"
+            name="entry.1805014275"
+            :value="content.rsvp.diet.peanut"
+          />
+          <label for="e3">{{ content.rsvp.diet.peanut }}</label>
+        </div>
+        <div class="input-wrap">
+          <input
+            id="e4"
+            type="checkbox"
+            name="entry.1805014275"
+            :value="content.rsvp.diet.shellfish"
+          />
+          <label for="e4">{{ content.rsvp.diet.shellfish }}</label>
+        </div>
+        <div class="input-wrap">
+          <input
+            id="e5"
+            type="checkbox"
+            name="entry.1805014275"
+            :value="content.rsvp.diet.other"
+          />
+          <label for="e5">{{ content.rsvp.diet.other }}</label>
+        </div>
+        <label for="other">{{ content.rsvp.diet.other }}</label>
+        <!-- <input
+          id="other"
+          name="entry.1805014275.other_option_response"
+          type="text"
+        /> -->
+        <input class="button" type="submit" value="Submit" />
+      </form>
+    </div>
   </section>
 </template>
 
@@ -61,7 +144,7 @@ export default {
     return { content: data }
   },
   data: () => ({
-    section: 'home',
+    section: { name: 'Home', icon: 'house', class: 'yellow' },
     center: { lat: -36.711569, lng: 175.610356 },
     markers: [
       {
@@ -240,7 +323,7 @@ export default {
   }),
   methods: {
     updateSection(section, i) {
-      this.section = section.toLowerCase()
+      this.section = section
     },
   },
 }
@@ -284,22 +367,23 @@ h4 {
   width: 100%;
   font-family: 'SuisseIntl-Regular', sans-serif;
   &__nav {
-    width: 60%;
+    width: 100%;
     padding: 20px 0;
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 9999;
     ul {
       padding: 0 5%;
       display: flex;
       list-style: none;
+      width: 60%;
       justify-content: space-around;
       li {
         cursor: pointer;
-        font-size: 20px;
       }
     }
     .selected {
+      text-decoration: underline;
     }
   }
   &__home,
@@ -308,7 +392,7 @@ h4 {
   &__faq,
   &__rsvp {
     width: 90%;
-    padding: 100px 5% 20px;
+    padding: 200px 5% 20px;
     height: 100vh;
   }
 }

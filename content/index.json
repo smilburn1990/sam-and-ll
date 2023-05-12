@@ -1,5 +1,5 @@
 {
-    "nav": [{"name": "Home", "icon": "house"}, {"name": "Schedule", "icon": "calendar"}, {"name": "Location", "icon": "location-dot"}, {"name": "FAQ", "icon": "square-question"}, {"name": "RSVP", "icon": "check"}],
+    "nav": [{"name": "Home", "icon": "house", "class": "yellow"}, {"name": "Schedule", "icon": "calendar", "class": "blue"}, {"name": "Location", "icon": "location-dot", "class": "red"}, {"name": "FAQ", "icon": "square-question", "class": "yellow"}, {"name": "RSVP", "icon": "check", "class": "blue"}],
     "home": {
         "names": "Sam and Lisa-Laura",
         "loaction": "Whangapoua",
@@ -52,6 +52,22 @@
         }
     ],
     "rsvp": {
-        "link": ""
+        "link": "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeDyeaATHt9f8FRogcs9_LnwpQE0BJpzw2MXEkUCaUcRKUJww/formResponse",
+        "name": {
+            "title": "What is your name?"
+        },
+        "coming": {
+            "title": "Are you coming?",
+            "yes": "Yes, I’ll be there",
+            "no": "Sorry, I cannot make it"
+        },
+        "diet": {
+            "title": "do you have any dietry requirements?",
+            "vegetarian": "Vegetarian",
+            "vegan": "Vegan",
+            "peanut": "Peanut Allergy",
+            "shellfish": "Shellfish Allergy",
+            "other": "Other"
+        }
     }
 }
