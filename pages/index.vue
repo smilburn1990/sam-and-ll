@@ -99,9 +99,9 @@
         class="wedding__schedule--section"
       >
         <h2>{{ faq.title }}</h2>
-        <div v-for="(detail, i) in faq.details" :key="`detail-${i}`">
-          <h3>{{ detail }}</h3>
-        </div>
+        <h3 v-for="(detail, i) in faq.details" :key="`detail-${i}`">
+          {{ detail }}
+        </h3>
         <a :href="faq.link" target="_blank">{{ faq.link }}</a>
       </div>
     </div>
@@ -467,12 +467,15 @@ h2 {
   font-size: 4rem;
   margin: 0.1rem 0;
   padding: 0;
+  font-weight: 300;
 }
 h3,
 a,
 .button {
   font-size: 1.5rem;
   margin: 0.2rem 0;
+  font-family: 'SuisseIntl-Regular', sans-serif;
+  font-weight: 300;
 }
 .blue {
   background-color: #62d6df;
@@ -574,7 +577,7 @@ a,
       input {
         border: none;
         padding: 1rem;
-        margin: 1rem 0;
+        margin: 0.5rem 0;
       }
       .button {
         padding: 1rem;
