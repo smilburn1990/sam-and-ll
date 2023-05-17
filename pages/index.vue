@@ -445,7 +445,12 @@ $tablet: 768px;
   font-family: 'SuisseIntl-Regular';
   src: url('../assets/fonts/SuisseIntl-Regular.otf') format('opentype');
 }
+@font-face {
+  font-family: 'SuisseIntl-Light';
+  src: url('../assets/fonts/SuisseIntl-Light.otf') format('opentype');
+}
 html {
+  font-family: 'SuisseIntl-Regular', sans-serif !important;
   font-size: 100%;
   @media (max-width: $screen) {
     font-size: 75%;
@@ -467,15 +472,12 @@ h2 {
   font-size: 4rem;
   margin: 0.1rem 0;
   padding: 0;
-  font-weight: 300;
 }
 h3,
 a,
 .button {
   font-size: 1.5rem;
   margin: 0.2rem 0;
-  font-family: 'SuisseIntl-Regular', sans-serif;
-  font-weight: 300;
 }
 .blue {
   background-color: #62d6df;
@@ -488,7 +490,6 @@ a,
 }
 .wedding {
   width: 100%;
-  font-family: 'SuisseIntl-Regular', sans-serif;
   &__nav {
     width: 100%;
     padding: 2rem 0;
