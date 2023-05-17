@@ -9,7 +9,7 @@
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
-    "rebuild": "rm -rf /dist && nuxt generate && git add . && git commit -m 'Rebuild' && git push"
+    "rebuild": "rm -rf /dist && nuxt generate && git add . && git commit -m 'Rebuild' && git push origin master"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
