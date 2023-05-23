@@ -478,7 +478,7 @@ html {
     font-size: 75%;
   }
   @media (max-width: $tablet) {
-    font-size: 45%;
+    font-size: 50%;
   }
 }
 body {
@@ -489,6 +489,9 @@ h1 {
   font-size: 11rem;
   text-transform: uppercase;
   margin: 1rem 0;
+  @media (max-width: $tablet) {
+    font-size: 7rem;
+  }
 }
 h2 {
   font-size: 4rem;
