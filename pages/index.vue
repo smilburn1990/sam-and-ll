@@ -543,18 +543,16 @@ a,
   }
   &__mobile-nav {
     display: none;
-    width: 90%;
-    padding: 2rem 0;
     position: fixed;
     top: 0;
     z-index: 9999;
-    padding: 2rem 5%;
+    width: 96%;
+    padding: 7em 2%;
     @media (max-width: $tablet) {
       display: block;
     }
     svg {
       float: right;
-      padding: 1rem;
       font-size: 2rem;
     }
     ul {
