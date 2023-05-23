@@ -16,6 +16,26 @@
         </li>
       </ul>
     </div>
+    <div class="wedding__mobile-nav" :class="section.class">
+      <fa
+        :icon="['fal', showNav ? 'xmark' : 'bars']"
+        @click="showNav = !showNav"
+      />
+      <ul v-if="showNav">
+        <li
+          v-for="(item, i) in content.nav"
+          :key="`nav_${i}`"
+          :class="
+            section.name.toLowerCase() === item.name.toLowerCase()
+              ? 'selected'
+              : ''
+          "
+          @click="updateSection(item, i)"
+        >
+          <h3>{{ item.name }}</h3>
+        </li>
+      </ul>
+    </div>
     <div
       v-if="section.name.toLowerCase() === 'home'"
       class="wedding__home animate__animated animate_fadeIn yellow"
@@ -248,6 +268,7 @@ export default {
     email: '',
     coming: false,
     showVideo: false,
+    showNav: false,
     markers: [
       {
         position: { lat: -36.711569, lng: 175.610356 },
@@ -430,6 +451,7 @@ export default {
   },
   methods: {
     updateSection(section, i) {
+      this.showNav = false
       this.section = section
     },
   },
@@ -456,7 +478,7 @@ html {
     font-size: 75%;
   }
   @media (max-width: $tablet) {
-    font-size: 90%;
+    font-size: 45%;
   }
 }
 body {
@@ -490,12 +512,18 @@ a,
 }
 .wedding {
   width: 100%;
+  word-wrap: break-word;
+  overflow: hidden;
   &__nav {
     width: 100%;
     padding: 2rem 0;
     position: fixed;
     top: 0;
     z-index: 9999;
+    display: flex;
+    @media (max-width: $tablet) {
+      display: none;
+    }
     ul {
       padding: 0 5% 0 1%;
       margin: 0;
@@ -513,6 +541,34 @@ a,
       text-decoration: underline;
     }
   }
+  &__mobile-nav {
+    display: none;
+    width: 90%;
+    padding: 2rem 0;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    padding: 2rem 5%;
+    @media (max-width: $tablet) {
+      display: block;
+    }
+    svg {
+      float: right;
+      padding: 1rem;
+      font-size: 2rem;
+    }
+    ul {
+      padding: 0 5% 0 1%;
+      margin: 0;
+      list-style: none;
+      width: 60%;
+      li {
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+      }
+    }
+  }
   &__home,
   &__schedule,
   &__location,
@@ -521,6 +577,12 @@ a,
     width: 90%;
     padding: 7rem 5%;
     height: 200vh;
+    position: relative;
+    overflow: hidden;
+    @media (max-width: $tablet) {
+      width: 96%;
+      padding: 7em 2%;
+    }
   }
   &__home {
     &--text {
@@ -528,6 +590,15 @@ a,
       top: 5rem;
       left: 5rem;
       width: calc(100% - 14rem);
+      padding: 7rem 5%;
+      @media (max-width: $tablet) {
+        top: 5rem;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        width: 96%;
+        padding: 2em 2%;
+      }
     }
     &--videos {
       height: 200vh;
@@ -539,18 +610,34 @@ a,
         width: 20rem;
         height: 20rem;
         object-fit: cover;
+        @media (max-width: $tablet) {
+          width: 30rem;
+          height: 30rem;
+        }
       }
       .one {
         top: 20%;
         left: 10%;
+        @media (max-width: $tablet) {
+          top: 4%;
+          left: 15%;
+        }
       }
       .two {
         left: 30%;
         top: 60%;
+        @media (max-width: $tablet) {
+          top: 20%;
+          left: 55%;
+        }
       }
       .three {
         left: 70%;
         top: 30%;
+        @media (max-width: $tablet) {
+          top: 35%;
+          left: -15%;
+        }
       }
     }
   }
@@ -559,9 +646,6 @@ a,
     &--section {
       margin: 4rem 0;
     }
-  }
-  &__faq {
-    padding: 2rem 5%;
   }
   &__rsvp {
     &--video {
