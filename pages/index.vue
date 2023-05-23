@@ -547,7 +547,7 @@ a,
     top: 0;
     z-index: 9999;
     width: 96%;
-    padding: 7em 2%;
+    padding: 2rem 2%;
     @media (max-width: $tablet) {
       display: block;
     }
@@ -609,10 +609,6 @@ a,
         width: 20rem;
         height: 20rem;
         object-fit: cover;
-        @media (max-width: $tablet) {
-          width: 30rem;
-          height: 30rem;
-        }
       }
       .one {
         top: 20%;
@@ -634,7 +630,7 @@ a,
         left: 70%;
         top: 30%;
         @media (max-width: $tablet) {
-          top: 35%;
+          top: 28%;
           left: -15%;
         }
       }
