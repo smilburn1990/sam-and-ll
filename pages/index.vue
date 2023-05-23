@@ -554,6 +554,7 @@ a,
     svg {
       float: right;
       font-size: 2rem;
+      width: 2rem;
     }
     ul {
       padding: 0 5% 0 1%;
