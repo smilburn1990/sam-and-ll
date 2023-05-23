@@ -490,7 +490,7 @@ h1 {
   text-transform: uppercase;
   margin: 1rem 0;
   @media (max-width: $tablet) {
-    font-size: 7rem;
+    font-size: 8rem;
   }
 }
 h2 {
@@ -592,7 +592,7 @@ a,
       top: 5rem;
       left: 5rem;
       width: calc(100% - 14rem);
-      padding: 7rem 5%;
+      padding: 2rem 0;
       @media (max-width: $tablet) {
         top: 5rem;
         left: 0;
@@ -609,28 +609,32 @@ a,
       .two,
       .three {
         position: absolute;
-        width: 20rem;
-        height: 20rem;
+        width: 30rem;
+        height: 30rem;
         object-fit: cover;
+        @media (max-width: $tablet) {
+          width: 20rem;
+          height: 20rem;
+        }
       }
       .one {
-        top: 20%;
-        left: 10%;
+        top: 4%;
+        left: 4%;
         @media (max-width: $tablet) {
           top: 4%;
           left: 15%;
         }
       }
       .two {
-        left: 30%;
-        top: 60%;
+        left: 70%;
+        top: 10%;
         @media (max-width: $tablet) {
           top: 20%;
           left: 55%;
         }
       }
       .three {
-        left: 70%;
+        left: 30%;
         top: 30%;
         @media (max-width: $tablet) {
           top: 28%;
@@ -644,6 +648,9 @@ a,
     &--section {
       margin: 4rem 0;
     }
+  }
+  &__faq {
+    margin-top: -4rem;
   }
   &__rsvp {
     &--video {
