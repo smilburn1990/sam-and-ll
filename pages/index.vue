@@ -1,6 +1,22 @@
 <template>
   <section class="wedding">
-    <div class="wedding__nav" :class="section.class">
+    <div v-if="!showSite" class="wedding__password red">
+      <h1>{{ content.password.title }}</h1>
+      <div class="wedding__password--form">
+        <input
+          v-model="password"
+          type="password"
+          placeholder="Password"
+          class="text-input"
+          @keyup.enter="checkPassword"
+        />
+        <button class="button yellow" @click="checkPassword">
+          {{ content.password.button }}
+        </button>
+        <h3 v-if="showError">{{ content.password.error }}</h3>
+      </div>
+    </div>
+    <div v-if="showSite" class="wedding__nav" :class="section.class">
       <ul>
         <li
           v-for="(item, i) in content.nav"
@@ -16,7 +32,7 @@
         </li>
       </ul>
     </div>
-    <div class="wedding__mobile-nav" :class="section.class">
+    <div v-if="showSite" class="wedding__mobile-nav" :class="section.class">
       <fa
         :icon="['fal', showNav ? 'xmark' : 'bars']"
         @click="showNav = !showNav"
@@ -32,34 +48,34 @@
           "
           @click="updateSection(item, i)"
         >
-          <h3>{{ item.name }}</h3>
+          <h2>{{ item.name }}</h2>
         </li>
       </ul>
     </div>
     <div
-      v-if="section.name.toLowerCase() === 'home'"
+      v-if="showSite && section.name.toLowerCase() === 'home'"
       class="wedding__home animate__animated animate_fadeIn yellow"
     >
       <div class="wedding__home--text">
         <h1>{{ content.home.names }}</h1>
         <h1>{{ content.home.location }}</h1>
+        <h1>{{ content.home.country }}</h1>
         <h1>{{ content.home.date }}</h1>
-        <h3>{{ content.home.message }}</h3>
       </div>
       <div class="wedding__home--videos">
-        <video autoplay loop muted class="one">
+        <video autoplay loop muted>
           <source
             src="https://res.cloudinary.com/and-dine/video/upload/v1684246286/gifs/part-1.mp4"
             type="video/mp4"
           />
         </video>
-        <video autoplay loop muted class="two">
+        <video autoplay loop muted>
           <source
             src="https://res.cloudinary.com/and-dine/video/upload/v1684246287/gifs/part-2.mp4"
             type="video/mp4"
           />
         </video>
-        <video autoplay loop muted class="three">
+        <video autoplay loop muted>
           <source
             src="https://res.cloudinary.com/and-dine/video/upload/v1684246287/gifs/part-3.mp4"
             type="video/mp4"
@@ -68,14 +84,14 @@
       </div>
     </div>
     <div
-      v-if="section.name.toLowerCase() === 'schedule'"
+      v-if="showSite && section.name.toLowerCase() === 'schedule'"
       class="wedding__schedule animate__animated animate_fadeIn blue"
     >
       <h3>{{ content.schedule.location }}</h3>
       <div class="wedding__schedule--section">
         <h2>{{ content.schedule.ceremony.date }}</h2>
-        <h2>{{ content.schedule.ceremony.name }}</h2>
         <h2>{{ content.schedule.ceremony.time }}</h2>
+        <h2>{{ content.schedule.ceremony.name }}</h2>
       </div>
       <div class="wedding__schedule--section">
         <h2>{{ content.schedule.reception.name }}</h2>
@@ -83,20 +99,20 @@
       </div>
       <div class="wedding__schedule--section">
         <h2>{{ content.schedule.pizza.date }}</h2>
-        <h2>{{ content.schedule.pizza.name }}</h2>
         <h2>{{ content.schedule.pizza.time }}</h2>
+        <h2>{{ content.schedule.pizza.name }}</h2>
       </div>
       <h3>{{ content.schedule.outro }}</h3>
     </div>
     <div
-      v-if="section.name.toLowerCase() === 'location'"
+      v-if="showSite && section.name.toLowerCase() === 'location'"
       class="wedding__location animate__animated animate_fadeIn red"
     >
       <gmap-map
         :center="center"
-        :zoom="16"
+        :zoom="14"
         :options="mapStyle"
-        style="height: 80vh; width: 60%; margin: 0 20%"
+        style="height: 80vh; width: 80%; margin: 2rem 10%"
       >
         <gmap-marker
           v-for="(marker, i) in markers"
@@ -110,7 +126,7 @@
       </gmap-map>
     </div>
     <div
-      v-if="section.name.toLowerCase() === 'faq'"
+      v-if="showSite && section.name.toLowerCase() === 'faq'"
       class="wedding__faq animate__animated animate_fadeIn yellow"
     >
       <div
@@ -119,14 +135,14 @@
         class="wedding__schedule--section"
       >
         <h2>{{ faq.title }}</h2>
-        <h3 v-for="(detail, i) in faq.details" :key="`detail-${i}`">
-          {{ detail }}
-        </h3>
+        <div v-for="(detail, i) in faq.details" :key="`detail-${i}`">
+          <h3 v-html="detail"></h3>
+        </div>
         <a :href="faq.link" target="_blank">{{ faq.link }}</a>
       </div>
     </div>
     <div
-      v-if="section.name.toLowerCase() === 'rsvp'"
+      v-if="showSite && section.name.toLowerCase() === 'rsvp'"
       class="wedding__rsvp animate__animated animate_fadeIn blue"
     >
       <video v-if="showVideo" class="wedding__rsvp--video" autoplay>
@@ -148,6 +164,7 @@
           v-model="email"
           name="emailAddress"
           type="email"
+          class="text-input"
           placeholder="Email"
         />
         <h3>{{ content.rsvp.name.title }}</h3>
@@ -156,6 +173,7 @@
           v-model="name"
           name="entry.1436407584"
           type="text"
+          class="text-input"
           placeholder="Name"
         />
 
@@ -213,31 +231,10 @@
           </div>
           <div class="element">
             <input
-              :id="content.rsvp.diet.peanut"
-              type="checkbox"
-              name="entry.972850836"
-              :value="content.rsvp.diet.peanut"
-            />
-            <label :for="content.rsvp.diet.peanut">{{
-              content.rsvp.diet.peanut
-            }}</label>
-          </div>
-          <div class="element">
-            <input
-              :id="content.rsvp.diet.shellfish"
-              type="checkbox"
-              name="entry.972850836"
-              :value="content.rsvp.diet.shellfish"
-            />
-            <label :for="content.rsvp.diet.shellfish">{{
-              content.rsvp.diet.shellfish
-            }}</label>
-          </div>
-          <div class="element">
-            <input
               :id="content.rsvp.diet.other"
               name="entry.653095865"
               type="text"
+              class="text-input"
               placeholder="Other"
             />
           </div>
@@ -247,7 +244,7 @@
           class="button yellow"
           type="submit"
           value="Send it!"
-          @click="showVideo = true"
+          @click="openVideo"
         />
       </form>
     </div>
@@ -269,6 +266,9 @@ export default {
     coming: false,
     showVideo: false,
     showNav: false,
+    showError: false,
+    showSite: false,
+    password: '',
     markers: [
       {
         position: { lat: -36.711569, lng: 175.610356 },
@@ -451,8 +451,21 @@ export default {
   },
   methods: {
     updateSection(section, i) {
+      window.scrollTo(0, 0)
       this.showNav = false
       this.section = section
+    },
+    checkPassword() {
+      if (this.password === this.content.password.key) {
+        this.showSite = true
+      } else {
+        this.showError = true
+      }
+    },
+    openVideo() {
+      setTimeout(() => {
+        this.showVideo = true
+      }, 1000)
     },
   },
 }
@@ -478,7 +491,7 @@ html {
     font-size: 75%;
   }
   @media (max-width: $tablet) {
-    font-size: 50%;
+    font-size: 35%;
   }
 }
 body {
@@ -486,23 +499,25 @@ body {
   padding: 0;
 }
 h1 {
-  font-size: 11rem;
+  font-size: 7rem;
   text-transform: uppercase;
   margin: 1rem 0;
-  @media (max-width: $tablet) {
-    font-size: 8rem;
-  }
 }
 h2 {
   font-size: 4rem;
   margin: 0.1rem 0;
   padding: 0;
 }
+label {
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
 h3,
 a,
+input,
 .button {
   font-size: 1.5rem;
-  margin: 0.2rem 0;
+  margin: 1rem 0;
 }
 .blue {
   background-color: #62d6df;
@@ -519,11 +534,12 @@ a,
   overflow: hidden;
   &__nav {
     width: 100%;
-    padding: 2rem 0;
+    padding: 1rem 0;
     position: fixed;
     top: 0;
     z-index: 9999;
     display: flex;
+    border-bottom: 2px solid black;
     @media (max-width: $tablet) {
       display: none;
     }
@@ -551,6 +567,7 @@ a,
     z-index: 9999;
     width: 96%;
     padding: 2rem 2%;
+    border-bottom: 2px solid black;
     @media (max-width: $tablet) {
       display: block;
     }
@@ -571,14 +588,15 @@ a,
       }
     }
   }
+  &__password,
   &__home,
   &__schedule,
   &__location,
   &__faq,
   &__rsvp {
     width: 90%;
+    min-height: 100vh;
     padding: 7rem 5%;
-    height: 200vh;
     position: relative;
     overflow: hidden;
     @media (max-width: $tablet) {
@@ -587,58 +605,19 @@ a,
     }
   }
   &__home {
-    &--text {
-      position: fixed;
-      top: 5rem;
-      left: 5rem;
-      width: calc(100% - 14rem);
-      padding: 2rem 0;
-      @media (max-width: $tablet) {
-        top: 5rem;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
-        width: 96%;
-        padding: 2em 2%;
-      }
-    }
     &--videos {
-      height: 200vh;
-      width: 100%;
-      .one,
-      .two,
-      .three {
-        position: absolute;
+      display: flex;
+      justify-content: space-between;
+      @media (max-width: $tablet) {
+        flex-direction: column;
+      }
+      video {
         width: 30rem;
         height: 30rem;
-        object-fit: cover;
         @media (max-width: $tablet) {
-          width: 20rem;
-          height: 20rem;
-        }
-      }
-      .one {
-        top: 4%;
-        left: 4%;
-        @media (max-width: $tablet) {
-          top: 4%;
-          left: 15%;
-        }
-      }
-      .two {
-        left: 70%;
-        top: 10%;
-        @media (max-width: $tablet) {
-          top: 20%;
-          left: 55%;
-        }
-      }
-      .three {
-        left: 30%;
-        top: 30%;
-        @media (max-width: $tablet) {
-          top: 28%;
-          left: -15%;
+          width: 96%;
+          padding: 7em 2%;
+          height: auto;
         }
       }
     }
@@ -646,16 +625,21 @@ a,
   &__schedule,
   &__faq {
     &--section {
-      margin: 4rem 0;
+      margin: 2rem 0;
     }
   }
   &__faq {
-    margin-top: -4rem;
+    margin-top: -2rem;
   }
-  &__rsvp {
+  &__rsvp,
+  &__password {
     &--video {
       width: 25%;
       padding: 0 37.5%;
+      @media (max-width: $tablet) {
+        width: 96%;
+        padding: 7em 2%;
+      }
     }
     &--form {
       width: 100%;
@@ -669,12 +653,20 @@ a,
         padding: 1rem;
         margin: 0.5rem 0;
       }
+      .element {
+        display: flex;
+        align-items: center;
+      }
+      .text-input {
+        width: 20rem;
+      }
       .button {
         padding: 1rem;
         margin: 1rem 0;
         cursor: pointer;
+        border: none;
         &:hover {
-          transform: scale(1.1);
+          transform: scale(1.05);
         }
       }
     }

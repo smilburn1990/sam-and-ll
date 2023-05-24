@@ -1,8 +1,15 @@
 {
     "nav": [{"name": "Home", "icon": "house", "class": "yellow"}, {"name": "Schedule", "icon": "calendar", "class": "blue"}, {"name": "Location", "icon": "location-dot", "class": "red"}, {"name": "FAQ", "icon": "square-question", "class": "yellow"}, {"name": "RSVP", "icon": "check", "class": "blue"}],
+    "password": {
+        "title": "Enter the password",
+        "key": "whangapoua",
+        "button": "Enter",
+        "error": "Incorrect password. Please try again."
+    },
     "home": {
         "names": "Sam + Lisa-Laura",
-        "location": "Whangapoua NZ",
+        "location": "Whangapoua",
+        "country": "New Zealand",
         "date": "17 February 2024",
         "message": "We are very aware that New Zealand is a long way for a large number of the people we care about. There is zero pressure to join. With this in mind - we will have a reception in Ghent in Summer ‘24."
     },
@@ -29,8 +36,12 @@
     },
     "faqs": [
         {
-            "title": "Ammenities",
-            "details": ["Whangapoua is a small beach settlement, with only one small general store that sells basic food supplies, baked goods, coffee, limited alcohol, petrol and diesel. We suggest bringing with you enough food and drinks for the weekend (Saturday night and Sunday is on us!) as the closest townships are Coromandel (20 minutes) and Whitianga (approx. 30 minutes).", "If you are passing through Thames, PAKn’SAVE is located at 100 Mary Street and opening hours are 8am - 8pm. Liquorland, Liquor King and Thames Liquor Centre are located on Pollen Street. Opening hours vary, all closing by 9.30pm. Wine and beer will be provided at the wedding alongside some top shelf later in the night. If you prefer to drink something else at the reception, feel free to BYO."]
+            "title": "Where to stay",
+            "details": ["For those looking to rent a house <a href='https://www.bookabach.co.nz/' target='_blank'>Booka Bach</a> or <a href='https://www.airbnb.co.nz' target='_blank'>AirBnb</a> are good options. There are also various local facebook group that you could reach out on.", "Houses can also be rented in Martarangi, which is a 30 minute drive away. Note it will be difficult to get a late night taxi back from Whangapoua so something will likely need to be pre-arranged.", "Cabins and Camping: Whangapoua Holiday Park: 5 kms from the wedding site (think about getting a van to drive people back and forth). Nice Cabins and amenities - <a href='https://www.whangapouaholidaypark.co.nz' target='_blank'>Whangapoua Holiday Park </a>", "Earls’ Paradise: This is a camping ground on land owned by a local, in Whangapoua itself. I think it is camping only. ", "We will also potentially have various lawns and sections for people to pitch a tent on. Please reach out if you would like to know more. "]
+        },
+        {
+            "title": "Whangapoua Amenities",
+            "details": ["Whangapoua is a small beach settlement, with only one small general store that sells basic food (decent pies) supplies, baked goods, coffee, limited alcohol, petrol and diesel. We suggest bringing with you enough food and drinks for the weekend (Saturday night and Sunday afternoon is on us) as the closest townships are Coromandel (20 minutes) and Whitianga (approx. 30 minutes).", "If you are passing through Thames, PAKn’SAVE is located at 100 Mary Street and opening hours are 8am - 8pm. Liquorland, Liquor King and Thames Liquor Centre are located on Pollen Street. Opening hours vary, all closing by 9.30pm. Wine, beer, and Pals will be provided at the wedding alongside some top shelf later in the night. Sunday - BYO."]
         },
         {
             "title": "Dress Code",
@@ -42,11 +53,11 @@
         },
         {
             "title": "Kids",
-            "details": ["Fuck off"]
+            "details": ["Kids are welcome at the ceremony and at the pizza party on Sunday. Many of you have a little  addition to the family that needs specific care. We will make a space available for feeds etc.The reception is not likely suitable for Kids, but babies on the arm / boob are obviously welcome.", "<a href='https://paypal.me/samandlisalaura?country.x=GB&locale.x=en_GB' target='_blank'>LL's Paypal</a>"]
         },
         {
             "title": "To those traveling from abroad",
-            "link": "https://nzeta.immigration.govt.nz/"
+            "details": ["NZeTA is an electronic travel authority for those entering from a visa waiver country. Link below.", "<a href='https://www.google.com/url?q=https://nzeta.immigration.govt.nz/&sa=D&source=docs&ust=1684926901776806&usg=AOvVaw3IAew4fcUjYPRriAxTmVPM' target='_blank'>Information about NZeTA</a>", "If you are traveling via the USA you need to apply for an ESTA. Even if you are just transiting through! Link below", "<a href='https://www.google.com/url?q=https://www.dhs.gov/electronic-system-travel-authorization-esta&sa=D&source=docs&ust=1684927017460949&usg=AOvVaw1AEjtb2M6R9tD32BCaMDHy' target='_blank'>Electronic System for Travel Authorization (ESTA)</a>", "For both of these visas, make sure you are using the links above - third party websites exist that can make the process annoying!"]
         },
         {
             "title": "Parking / Getting Around",
@@ -56,10 +67,10 @@
     "rsvp": {
         "link": "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeDyeaATHt9f8FRogcs9_LnwpQE0BJpzw2MXEkUCaUcRKUJww/formResponse",
         "email": {
-            "title": "What is your email?"
+            "title": "Email"
         },
         "name": {
-            "title": "What is your name?"
+            "title": "Names of those attending"
         },
         "coming": {
             "title": "Are you coming?",
@@ -70,8 +81,6 @@
             "title": "Do you have any dietary requirements?",
             "vegetarian": "Vegetarian",
             "vegan": "Vegan",
-            "peanut": "Peanut",
-            "shellfish": "Shellfish",
             "other": "Other:"
         }
     }
