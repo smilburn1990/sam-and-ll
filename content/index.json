@@ -27,7 +27,7 @@
         "pizza": {
             "date":"18 February 2024",
             "name": "Tony Pepperoni's Pizza",
-            "time": "Noon"
+            "time": "12pm"
         },
         "outro": "More information will be provided closer to the date"
     },
@@ -49,11 +49,11 @@
         },
         {
             "title": "Gifts",
-            "details": ["Look, we know alot of you are traveling a LONG way. That is appreciated, and all we are really after.", "With that in mind no gifts are necessary. However, if you wish to give a gift, we will gratefully accept a small contribution towards a honeymoon."]
+            "details": ["Look, we know alot of you are traveling a LONG way. That is appreciated, and all we are really after.", "With that in mind no gifts are necessary. However, if you wish to give a gift, we will gratefully accept a small contribution towards a honeymoon.", "<a href='https://paypal.me/samandlisalaura?country.x=GB&locale.x=en_GB' target='_blank'>Our Paypal</a>"]
         },
         {
             "title": "Kids",
-            "details": ["Kids are welcome at the ceremony and at the pizza party on Sunday. Many of you have a little  addition to the family that needs specific care. We will make a space available for feeds etc.The reception is not likely suitable for Kids, but babies on the arm / boob are obviously welcome.", "<a href='https://paypal.me/samandlisalaura?country.x=GB&locale.x=en_GB' target='_blank'>LL's Paypal</a>"]
+            "details": ["Kids are welcome at the ceremony and at the pizza party on Sunday. Many of you have a little  addition to the family that needs specific care. We will make a space available for feeds etc.The reception is not likely suitable for Kids, but babies on the arm / boob are obviously welcome."]
         },
         {
             "title": "To those traveling from abroad",
@@ -69,8 +69,11 @@
         "email": {
             "title": "Email"
         },
+        "number": {
+            "title": "Number of people attending"
+        },
         "name": {
-            "title": "Names of those attending"
+            "title": "Name(s) of those attending"
         },
         "coming": {
             "title": "Are you coming?",

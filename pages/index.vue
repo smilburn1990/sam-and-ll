@@ -15,6 +15,10 @@
         </button>
         <h3 v-if="showError">{{ content.password.error }}</h3>
       </div>
+      <p class="watermark">
+        Milburn Solutions Ltd
+        <fa class="tick small-icon" :icon="['fal', 'poo']" />
+      </p>
     </div>
     <div v-if="showSite" class="wedding__nav" :class="section.class">
       <ul>
@@ -51,6 +55,10 @@
           <h2>{{ item.name }}</h2>
         </li>
       </ul>
+      <p class="watermark">
+        Milburn Solutions Ltd
+        <fa class="tick small-icon" :icon="['fal', 'poo']" />
+      </p>
     </div>
     <div
       v-if="showSite && section.name.toLowerCase() === 'home'"
@@ -82,6 +90,10 @@
           />
         </video>
       </div>
+      <p class="watermark">
+        Milburn Solutions Ltd
+        <fa class="tick small-icon" :icon="['fal', 'poo']" />
+      </p>
     </div>
     <div
       v-if="showSite && section.name.toLowerCase() === 'schedule'"
@@ -94,8 +106,8 @@
         <h2>{{ content.schedule.ceremony.name }}</h2>
       </div>
       <div class="wedding__schedule--section">
-        <h2>{{ content.schedule.reception.name }}</h2>
         <h2>{{ content.schedule.reception.time }}</h2>
+        <h2>{{ content.schedule.reception.name }}</h2>
       </div>
       <div class="wedding__schedule--section">
         <h2>{{ content.schedule.pizza.date }}</h2>
@@ -103,6 +115,10 @@
         <h2>{{ content.schedule.pizza.name }}</h2>
       </div>
       <h3>{{ content.schedule.outro }}</h3>
+      <p class="watermark">
+        Milburn Solutions Ltd
+        <fa class="tick small-icon" :icon="['fal', 'poo']" />
+      </p>
     </div>
     <div
       v-if="showSite && section.name.toLowerCase() === 'location'"
@@ -124,6 +140,10 @@
         >
         </gmap-marker>
       </gmap-map>
+      <p class="watermark">
+        Milburn Solutions Ltd
+        <fa class="tick small-icon" :icon="['fal', 'poo']" />
+      </p>
     </div>
     <div
       v-if="showSite && section.name.toLowerCase() === 'faq'"
@@ -140,12 +160,23 @@
         </div>
         <a :href="faq.link" target="_blank">{{ faq.link }}</a>
       </div>
+      <p class="watermark">
+        Milburn Solutions Ltd
+        <fa class="tick small-icon" :icon="['fal', 'poo']" />
+      </p>
     </div>
     <div
       v-if="showSite && section.name.toLowerCase() === 'rsvp'"
       class="wedding__rsvp animate__animated animate_fadeIn blue"
     >
-      <video v-if="showVideo" class="wedding__rsvp--video" autoplay>
+      <video
+        v-if="showVideo"
+        class="wedding__rsvp--video"
+        autoplay
+        loop
+        webkit-playsinline
+        playsinline
+      >
         <source
           src="https://res.cloudinary.com/and-dine/video/upload/v1684310816/gifs/success.mp4"
           type="video/mp4"
@@ -167,14 +198,23 @@
           class="text-input"
           placeholder="Email"
         />
-        <h3>{{ content.rsvp.name.title }}</h3>
+        <h3>{{ content.rsvp.number.title }}</h3>
         <input
+          id="number"
+          v-model="number"
+          name="entry.408792882"
+          type="text"
+          class="text-input"
+          placeholder="Number"
+        />
+        <h3>{{ content.rsvp.name.title }}</h3>
+        <textarea
           id="name"
           v-model="name"
           name="entry.1436407584"
           type="text"
-          class="text-input"
-          placeholder="Name"
+          class="text-area"
+          placeholder="Name(s)"
         />
 
         <div class="radio">
@@ -246,7 +286,12 @@
           value="Send it!"
           @click="openVideo"
         />
+        <h3>{{ content.home.message }}</h3>
       </form>
+      <p class="watermark">
+        Milburn Solutions Ltd
+        <fa class="tick small-icon" :icon="['fal', 'poo']" />
+      </p>
     </div>
   </section>
 </template>
@@ -262,6 +307,7 @@ export default {
     section: { name: 'Home', icon: 'house', class: 'yellow' },
     center: { lat: -36.711569, lng: 175.610356 },
     name: '',
+    number: '',
     email: '',
     coming: false,
     showVideo: false,
@@ -446,7 +492,12 @@ export default {
   }),
   computed: {
     formFilled() {
-      return this.name !== '' && this.email !== '' && this.coming
+      return (
+        this.name !== '' &&
+        this.number !== '' &&
+        this.email !== '' &&
+        this.coming
+      )
     },
   },
   methods: {
@@ -518,6 +569,7 @@ label {
 h3,
 a,
 input,
+textarea,
 .button {
   font-size: 1.5rem;
   margin: 1rem 0;
@@ -654,7 +706,9 @@ input,
       h3 {
         margin: 1rem 0;
       }
-      input {
+      input,
+      button,
+      textarea {
         border: none;
         padding: 1rem;
         margin: 0.5rem 0;
@@ -667,8 +721,13 @@ input,
         display: flex;
         align-items: center;
       }
-      .text-input {
+      .text-input,
+      .text-area {
         width: 20rem;
+        font-family: 'SuisseIntl-Regular', sans-serif !important;
+      }
+      .text-area {
+        height: 10rem;
       }
       .button {
         padding: 1rem;
@@ -680,6 +739,11 @@ input,
         }
       }
     }
+  }
+  .watermark {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
   }
 }
 </style>
