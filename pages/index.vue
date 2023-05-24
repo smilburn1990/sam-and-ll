@@ -742,13 +742,14 @@ textarea,
     bottom: 2rem;
     right: 5%;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     @media (max-width: $tablet) {
       right: 2%;
     }
     svg {
       font-size: 1rem;
       width: 1rem;
+      margin-left: 0.5rem;
     }
   }
 }
