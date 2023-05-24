@@ -586,6 +586,7 @@ textarea,
   width: 100%;
   word-wrap: break-word;
   overflow: hidden;
+  background-color: white;
   &__nav {
     width: 100%;
     padding: 1rem 0;
