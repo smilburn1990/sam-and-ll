@@ -491,7 +491,7 @@ html {
     font-size: 75%;
   }
   @media (max-width: $tablet) {
-    font-size: 35%;
+    font-size: 50%;
   }
 }
 body {
@@ -499,9 +499,12 @@ body {
   padding: 0;
 }
 h1 {
-  font-size: 7rem;
+  font-size: 8rem;
   text-transform: uppercase;
   margin: 1rem 0;
+  @media (max-width: $tablet) {
+    font-size: 5rem;
+  }
 }
 h2 {
   font-size: 4rem;
@@ -518,6 +521,9 @@ input,
 .button {
   font-size: 1.5rem;
   margin: 1rem 0;
+  @media (max-width: $tablet) {
+    font-size: 2rem;
+  }
 }
 .blue {
   background-color: #62d6df;
