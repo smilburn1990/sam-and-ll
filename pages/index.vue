@@ -739,9 +739,12 @@ textarea,
   .watermark {
     position: absolute;
     bottom: 2rem;
-    right: 2rem;
+    right: 5%;
     display: flex;
     align-items: center;
+    @media (max-width: $tablet) {
+      right: 2%;
+    }
     svg {
       font-size: 1rem;
       width: 1rem;
