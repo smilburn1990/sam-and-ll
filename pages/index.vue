@@ -63,19 +63,19 @@
         <h1>{{ content.home.date }}</h1>
       </div>
       <div class="wedding__home--videos">
-        <video autoplay loop muted>
+        <video autoplay loop muted controls webkit-playsinline playsinline>
           <source
             src="https://res.cloudinary.com/and-dine/video/upload/v1684246286/gifs/part-1.mp4"
             type="video/mp4"
           />
         </video>
-        <video autoplay loop muted>
+        <video autoplay loop muted controls webkit-playsinline playsinline>
           <source
             src="https://res.cloudinary.com/and-dine/video/upload/v1684246287/gifs/part-2.mp4"
             type="video/mp4"
           />
         </video>
-        <video autoplay loop muted>
+        <video autoplay loop muted controls webkit-playsinline playsinline>
           <source
             src="https://res.cloudinary.com/and-dine/video/upload/v1684246287/gifs/part-3.mp4"
             type="video/mp4"
@@ -658,6 +658,10 @@ input,
         border: none;
         padding: 1rem;
         margin: 0.5rem 0;
+        border-radius: 0;
+        &:focus {
+          outline: none;
+        }
       }
       .element {
         display: flex;
