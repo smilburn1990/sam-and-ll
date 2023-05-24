@@ -279,9 +279,10 @@
           v-if="formFilled"
           class="button yellow"
           type="submit"
-          value="Send it!"
           @click="openVideo"
-        />
+        >
+          Send it!
+        </button>
         <h3>{{ content.home.message }}</h3>
       </form>
       <p class="watermark">
