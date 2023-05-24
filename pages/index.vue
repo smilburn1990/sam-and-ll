@@ -731,6 +731,7 @@ textarea,
         margin: 1rem 0;
         cursor: pointer;
         border: none;
+        border-radius: 0;
         &:hover {
           transform: scale(1.05);
         }
