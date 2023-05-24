@@ -55,10 +55,6 @@
           <h2>{{ item.name }}</h2>
         </li>
       </ul>
-      <p class="watermark">
-        Milburn Solutions Ltd
-        <fa class="tick small-icon" :icon="['fal', 'poo']" />
-      </p>
     </div>
     <div
       v-if="showSite && section.name.toLowerCase() === 'home'"
@@ -744,6 +740,12 @@ textarea,
     position: absolute;
     bottom: 2rem;
     right: 2rem;
+    display: flex;
+    align-items: center;
+    svg {
+      font-size: 1rem;
+      width: 1rem;
+    }
   }
 }
 </style>
