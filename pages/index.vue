@@ -275,7 +275,7 @@
             />
           </div>
         </div>
-        <input
+        <button
           v-if="formFilled"
           class="button yellow"
           type="submit"
