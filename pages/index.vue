@@ -504,7 +504,7 @@ export default {
       this.section = section
     },
     checkPassword() {
-      if (this.password === this.content.password.key) {
+      if (this.password.toLowerCase() === this.content.password.key) {
         this.showSite = true
       } else {
         this.showError = true
