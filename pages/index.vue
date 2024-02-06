@@ -101,16 +101,19 @@
         <h2>{{ content.schedule.ceremony.time }}</h2>
         <h2>{{ content.schedule.ceremony.name }}</h2>
       </div>
+      <h3>{{ content.schedule.welcome }}</h3>
       <div class="wedding__schedule--section">
+        <h2>{{ content.schedule.reception.date }}</h2>
         <h2>{{ content.schedule.reception.time }}</h2>
         <h2>{{ content.schedule.reception.name }}</h2>
       </div>
+      <h3 v-for="(text, i) in content.schedule.after" :key="i">{{ text }}</h3>
       <div class="wedding__schedule--section">
         <h2>{{ content.schedule.pizza.date }}</h2>
         <h2>{{ content.schedule.pizza.time }}</h2>
         <h2>{{ content.schedule.pizza.name }}</h2>
       </div>
-      <h3>{{ content.schedule.outro }}</h3>
+      <h3>{{ content.schedule.info }}</h3>
       <p class="watermark">
         Milburn Solutions Ltd
         <fa class="tick small-icon" :icon="['fal', 'poo']" />
@@ -161,7 +164,7 @@
         <fa class="tick small-icon" :icon="['fal', 'poo']" />
       </p>
     </div>
-    <div
+    <!-- <div
       v-if="showSite && section.name.toLowerCase() === 'rsvp'"
       class="wedding__rsvp animate__animated animate_fadeIn blue"
     >
@@ -289,7 +292,7 @@
         Milburn Solutions Ltd
         <fa class="tick small-icon" :icon="['fal', 'poo']" />
       </p>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -686,6 +689,11 @@ textarea,
   }
   &__faq {
     margin-top: -2rem;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
   }
   &__rsvp,
   &__password {
